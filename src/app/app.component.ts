@@ -21,6 +21,8 @@ export class AppComponent {
     }
   })
 
+  imageSrc = signal('https:///assets.pokemon.com/assets/cms2/img/pokedex/detail/025.png')
+
   
 
   incrementLife() {
