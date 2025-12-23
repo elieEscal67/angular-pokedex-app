@@ -2,7 +2,7 @@
 
 <ul class="pokedex">
   @for (pokemon of pokemons; track pokemon.id) {
-    <li class="pokemon-card">
+    <li class="pokemon-card" appPokemonBorder [pokemonType]="pokemon.types[0]">
 
       <h2>{{ pokemon.name }}</h2>
 
