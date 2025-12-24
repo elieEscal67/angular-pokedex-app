@@ -13,6 +13,8 @@
       />
 
       <p><strong>Taille :</strong> {{ size(pokemon) }}</p>
+
+      <p> {{pokemon.created |date : "dd/MM/yyyy"}}</p>
       <p><strong>Points de vie :</strong> {{ pokemon.life }}</p>
 
       <div class="actions">

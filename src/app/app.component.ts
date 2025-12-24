@@ -1,16 +1,20 @@
-import { Component, computed, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { POKEMON_LIST } from './pokemon-list.fake';
 import { Pokemon } from './pokemon.model';
 import { PokemonBorderDirective } from './pokemon-border.directive';
+import { DatePipe } from '@angular/common';
+import { PokemonService } from './pokemon.service';
+import { Inject } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  imports: [PokemonBorderDirective],
+  imports: [PokemonBorderDirective, DatePipe],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
+  readonly #pokemonService = inject(PokemonService);
   
   name = signal("Pikachu");
   life = signal(21);
