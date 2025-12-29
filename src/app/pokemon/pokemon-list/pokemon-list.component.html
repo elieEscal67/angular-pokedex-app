@@ -1,1 +1,49 @@
-<p>pokemon-list works!</p>
+<div class="search-container">
+ 
+  <input
+    id="search"
+    type="text"
+    name="searchTerm"
+    class="form-control"
+    placeholder="Rechercher un pokemon"
+    #searchField
+    [value]="searchTerm()"
+    (input)="searchTerm.set(searchField.value)"
+  />
+</div>
+
+
+<ul class="pokedex">
+  @for (pokemon of pokemonListFiltered(); track pokemon.id) {
+    <li class="pokemon-card" appPokemonBorder [pokemonType]="pokemon.types[0]">
+
+      <h2>{{ pokemon.name }}</h2>
+
+      <img
+        [src]="pokemon.picture"
+        [alt]="pokemon.name"
+        class="pokemon-image"
+      />
+
+      <p><strong>Taille :</strong> {{ size(pokemon) }}</p>
+
+      <p> {{pokemon.created |date : "dd/MM/yyyy"}}</p>
+      <p><strong>Points de vie :</strong> {{ pokemon.life }}</p>
+
+      <div class="actions">
+        <button
+          (click)="incrementLife(pokemon)"
+          [disabled]="pokemon.life >= 30">
+          +
+        </button>
+
+        <button
+          (click)="decrementLife(pokemon)"
+          [disabled]="pokemon.life <= 10">
+          -
+        </button>
+      </div>
+
+    </li>
+  }
+</ul>
