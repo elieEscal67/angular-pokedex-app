@@ -1,7 +1,25 @@
-<h1>Pokédex</h1>
+<div class="search-container">
+  <h1>Pokédex</h1>
+
+  <label for="search" class="form-label">
+    Rechercher un pokémon
+  </label>
+
+  <input
+    id="search"
+    type="text"
+    name="searchTerm"
+    class="form-control"
+    placeholder="Rechercher un pokemon"
+    #searchField
+    [value]="searchTerm()"
+    (input)="searchTerm.set(searchField.value)"
+  />
+</div>
+
 
 <ul class="pokedex">
-  @for (pokemon of pokemons; track pokemon.id) {
+  @for (pokemon of pokemonListFiltered(); track pokemon.id) {
     <li class="pokemon-card" appPokemonBorder [pokemonType]="pokemon.types[0]">
 
       <h2>{{ pokemon.name }}</h2>
